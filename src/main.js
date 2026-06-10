@@ -31,7 +31,10 @@ function icon(name){ return `<span class="icon">${icons[name]}</span>`; }
 function badge(text, tone='primary') { return `<span class="badge ${tone}"><i></i>${text}</span>`; }
 function card(title, value, meta, iconName='chart') { return `<div class="metric"><div><p>${title}</p><strong>${value}</strong><small>${meta}</small></div>${icon(iconName)}</div>`; }
 function section(title, sub, iconName, content, aside='') { return `<section class="panel"><header class="panel-head"><div class="head-title">${icon(iconName)}<div><h2>${title}</h2>${sub?`<p>${sub}</p>`:''}</div></div>${aside}</header><div class="panel-body">${content}</div></section>`; }
-function table(headers, rows) { return `<div class="table-wrap"><table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`; }
+function table(headers, rows) {
+  const bodyRows = Array.isArray(rows) ? rows.join('') : String(rows ?? '');
+  return `<div class="table-wrap"><table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${bodyRows}</tbody></table></div>`;
+}
 
 const taskRows = tasks.map(t=>`<tr><td><strong>${t[0]}</strong></td><td>${t[1]}</td><td class="mono">${t[2]}</td><td>${t[3]}</td><td class="mono">${t[4]}</td><td>${badge(t[5], t[5]==='已完成'?'success':t[5]==='分析中'?'primary':'muted')}</td><td>${badge(t[6], t[6]==='已确认'?'success':t[6]==='部分确认'?'warning':'muted')}</td><td><button class="link">查看详情</button><button class="link">导出</button></td></tr>`).join('');
 

@@ -24,6 +24,8 @@ public class ValidateStatic {
         for (String keyword : List.of("人工确认", "岗位画像", "培养建议", "导出", "匹配分")) {
             require(js.contains(keyword), "Missing required keyword: " + keyword);
         }
+        require(js.contains("Array.isArray(rows)"), "table helper must accept array and pre-rendered row strings");
+        require(js.contains("String(rows ?? '')"), "table helper must safely render empty row content");
 
         String server = Files.readString(root.resolve("tools/StaticServer.java"), StandardCharsets.UTF_8);
         require(server.contains("HttpServer.create"), "StaticServer must use Java HttpServer");
