@@ -1,0 +1,10 @@
+{
+  "name": "job-match-agent-prototype",
+  "version": "1.0.0",
+  "private": true,
+  "description": "岗位匹配智能体一期原型静态演示",
+  "scripts": {
+    "start": "python3 -m http.server 4173",
+    "check": "python3 -m compileall scripts"
+  }
+}
