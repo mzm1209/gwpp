@@ -1,0 +1,10 @@
+{
+  "name": "job-match-agent-prototype",
+  "version": "1.0.0",
+  "private": true,
+  "description": "岗位匹配智能体一期原型静态演示",
+  "scripts": {
+    "start": "javac tools/StaticServer.java && java -cp tools StaticServer 4173 .",
+    "check": "javac tools/StaticServer.java tools/ValidateStatic.java && java -cp tools ValidateStatic ."
+  }
+}
